@@ -14,6 +14,27 @@ function displayTemperature(response) {
 
   let windElement = document.querySelector("#current-wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
+
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thrusday",
+    "Friday",
+    "Saturday"
+  ];
+
+  let day = days[now.getDay()];
+  let hour = now.getHours();
+  let minute = now.getMinutes();
+
+  if (minute < 10) {
+    minute = "0" + minute;
+  }
+
+  let timeElement = document.querySelector("#current-time");
+  timeElement.innerHTML = `${day},${hour}:${minute}`;
 }
 
 let apiKey = "c8637e0cfa28648d49fb4f6afe6af61b";
