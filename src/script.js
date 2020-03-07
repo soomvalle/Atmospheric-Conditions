@@ -15,6 +15,15 @@ function displayTemperature(response) {
   let windElement = document.querySelector("#current-wind");
   windElement.innerHTML = Math.round(response.data.wind.speed);
 
+  let iconElement = document.querySelector("#current-icon");
+  iconNumber = response.data.weather[0].icon;
+  iconElement.setAttribute(
+    `src`,
+    `http://openweathermap.org/img/wn/${iconNumber}@2x.png`
+  );
+
+  let now = new Date();
+
   let days = [
     "Sunday",
     "Monday",
@@ -38,9 +47,8 @@ function displayTemperature(response) {
 }
 
 let apiKey = "c8637e0cfa28648d49fb4f6afe6af61b";
+let city = "lisbon";
 let tempUnit = `metric`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Lisbon&appid=${apiKey}&units=${tempUnit}`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${tempUnit}`;
 
 axios.get(apiUrl).then(displayTemperature);
-
-let now = new Date();

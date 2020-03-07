@@ -36,6 +36,8 @@ li {
 }
 .weather-temperature img {
   margin-left: 24px;
+  position: relative;
+  top: -16px;
 }
 
 .weather-temperature strong {
