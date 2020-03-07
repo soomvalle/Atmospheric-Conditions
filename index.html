@@ -11,15 +11,17 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="src/script.js"></script>
   </head>
   <body>
     <div class="weather-app">
       <div class="container">
         <div class="location-overview">
-          <h1>Lisbon</h1>
+          <h1 id="current-city"></h1>
           <ul>
-            <li>Saturday 2:00</li>
-            <li>Cloudy</li>
+            <li id="current-time"></li>
+            <li id="current-description"></li>
           </ul>
         </div>
       </div>
@@ -33,7 +35,7 @@
               class="float-left"
             />
             <div class="float-left">
-              <strong>12</strong
+              <strong id="current-temperature"></strong
               ><span class="units">°C | <a href="#">°F</a></span>
             </div>
           </div>
@@ -41,13 +43,8 @@
 
         <div class="col-6">
           <ul>
-            <li>
-              Precipitation: 0%
-            </li>
-            <li>
-              Humidity: 75%
-            </li>
-            <li>Wind: 2 km/h</li>
+            <li>Humidity: <span id="current-humidity">75</span>%</li>
+            <li>Wind: <span id="current-wind"></span> km/h</li>
           </ul>
         </div>
       </div>
