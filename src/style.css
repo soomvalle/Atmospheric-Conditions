@@ -5,8 +5,8 @@ body {
 .weather-app {
   max-width: 600px;
   margin: 120px auto;
-  padding: 20px;
-  border: 1px solid red;
+  padding: 40px 12px;
+  border: 1px solid grey;
   border-radius: 2px;
 }
 
@@ -21,10 +21,31 @@ ul {
   margin: 0;
   padding: 0;
 }
+
 li {
   list-style: none;
   color: #878787;
+  font-weight: lighter;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.location-overview {
+  margin-bottom: 24px;
+}
+.weather-temperature img {
+  margin-left: 24px;
+}
+
+.weather-temperature strong {
+  font-size: 64px;
+  font-weight: lighter;
+  margin-left: 12px;
+  line-height: 1;
+}
+
+.weather-temperature .units {
+  position: relative;
   font-size: 16px;
-  font-weight: 100;
-  line-height: 24px;
+  top: -36px;
 }
