@@ -12,10 +12,20 @@
     />
     <link rel="stylesheet" href="src/style.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="src/script.js"></script>
   </head>
   <body>
     <div class="weather-app">
+      <form id="search-form">
+        <input
+          type="search"
+          placeholder="Where to?"
+          autocomplete="off"
+          class="form-control"
+          id="city-input"
+        />
+        <input type="submit" value="Let's go!" class="btn btn-primary" />
+      </form>
+
       <div class="container">
         <div class="location-overview">
           <h1 id="current-city"></h1>
@@ -41,7 +51,6 @@
             </div>
           </div>
         </div>
-
         <div class="col-6">
           <ul>
             <li>Humidity: <span id="current-humidity">75</span>%</li>
@@ -50,5 +59,6 @@
         </div>
       </div>
     </div>
+    <script src="src/script.js"></script>
   </body>
 </html>

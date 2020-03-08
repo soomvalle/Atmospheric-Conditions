@@ -1,5 +1,4 @@
 function displayTemperature(response) {
-  console.log(response.data.main.temp);
   let temperatureElement = document.querySelector("#current-temperature");
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
@@ -43,12 +42,22 @@ function displayTemperature(response) {
   }
 
   let timeElement = document.querySelector("#current-time");
-  timeElement.innerHTML = `${day},${hour}:${minute}`;
+  timeElement.innerHTML = `${day}, ${hour}:${minute}`;
 }
 
-let apiKey = "c8637e0cfa28648d49fb4f6afe6af61b";
-let city = "lisbon";
-let tempUnit = `metric`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${tempUnit}`;
+function search(city) {
+  let apiKey = "c8637e0cfa28648d49fb4f6afe6af61b";
+  let tempUnit = `metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${tempUnit}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
+
+search("New York");
+let form = document.querySelector("#search-form");
+form.addEventListener("submit", handleSubmit);
