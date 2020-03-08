@@ -72,3 +72,17 @@ li {
   text-decoration: none;
   cursor: default;
 }
+
+.next-week {
+  width: 500px;
+  display: block;
+  margin: 24px auto 0px;
+}
+
+.next-week img {
+  width: 45px;
+}
+
+.col-2 {
+  min-width: 20%;
+}
