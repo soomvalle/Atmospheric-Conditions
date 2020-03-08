@@ -47,11 +47,39 @@ function displayTemperature(response) {
   timeElement.innerHTML = `${day}, ${hour}:${minute}`;
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 5; index++) {
+    forecast = response.data.list[index];
+
+    forecastElement.innerHTML += `
+    <div class="col-2">
+      <img
+        src="http://openweathermap.org/img/wn/${
+          forecast.weather[0].icon
+        }@2x.png"
+        />
+    <div class="weather-forecast-temp">
+    <strong>
+    ${Math.round(forecast.main.temp_max)}
+    </strong>
+    | ${Math.round(forecast.main.temp_min)}
+    </div>
+    </div>`;
+  }
+}
+
 function search(city) {
   let apiKey = "c8637e0cfa28648d49fb4f6afe6af61b";
   let tempUnit = `metric`;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${tempUnit}`;
   axios.get(apiUrl).then(displayTemperature);
+
+  apiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${tempUnit}`;
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function handleSubmit(event) {

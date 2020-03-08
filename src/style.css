@@ -85,4 +85,21 @@ li {
 
 .col-2 {
   min-width: 20%;
+  margin-top: 20px;
+}
+
+.col-2 img {
+  width: 64px;
+  text-align: center;
+  margin-top: -12px;
+  margin-left: 12px;
+}
+
+.weather-forecast-temp {
+  text-align: center;
+}
+
+h3 {
+  font-size: 10px;
+  text-align: center;
 }
