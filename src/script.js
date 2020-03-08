@@ -1,9 +1,9 @@
 function displayTemperature(response) {
-  let temperatureElement = document.querySelector("#current-temperature");
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
-
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = response.data.name;
+
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
 
   let descriptionElement = document.querySelector("#current-description");
   descriptionElement.innerHTML = response.data.weather[0].main;
@@ -20,6 +20,8 @@ function displayTemperature(response) {
     `src`,
     `http://openweathermap.org/img/wn/${iconNumber}@2x.png`
   );
+
+  celsiusTemperature = Math.round(response.data.main.temp);
 
   let now = new Date();
 
@@ -58,6 +60,34 @@ function handleSubmit(event) {
   search(cityInputElement.value);
 }
 
-search("New York");
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature");
+  let fahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+}
+
+function displayCelsiusTemperature(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#current-temperature");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+}
+
+let celsiusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
+
+search("Lisbon");
